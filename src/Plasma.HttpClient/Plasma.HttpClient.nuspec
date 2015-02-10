@@ -6,10 +6,10 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <licenseUrl>http://www.opensource.org/licenses/MS-PL</licenseUrl>
-    <projectUrl>https://github.com/jennifersmith/plasma</projectUrl>
-    <iconUrl>http://seleniumhq.org/images/big-logo.png</iconUrl>
+    <projectUrl>https://github.com/plasma-dot-net/plasma</projectUrl>
+    <iconUrl>https://github.com/plasma-dot-net/plasma/blob/master/plasma-logo.jpg</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <tags>plasma</tags>
+    <tags>plasma httpclient testing</tags>
   </metadata>
 </package>
