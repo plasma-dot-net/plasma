@@ -28,7 +28,7 @@ The entire ASP.NET application pipeline is executed, returning the raw HTTP resp
 
 Contains the core plasma runtime and app domain spoofing code, but you interact with it through a "client-like" library.
 
-##### Plasma.HttpClient
+##### Plasma.HttpClient `Introduced in v.2.0`
 
 Provides a builder class to use a standard `System.Net.Http.HttpClient` (available in the package dependency `Microsoft.Net.Http`) to make calls to your application.
 
@@ -46,16 +46,34 @@ Each of these libraries are available as **nuget packages**.
 
 ## Getting started
 
-    COMING SOON
+The simplest way to get started is to use `Plasma.HttpClient`. It uses `System.Net.Http.HttpClient` to communicate with your app, and should be very familiar if you've ever done any HTTP in C#.
+
+Install the `Plasma.HttpClient` nuget package
+
+    PM > Package-Install Plasma.HttpClient
+
+You can then write tests that look like this:
+
+```csharp
+    var client = PlasmaClient.For<MvcApplication>();
+
+    var response = await client.GetAsync("/some-path");
+
+    Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+    Assert.That(response.Content.ReadAsStringAsync().Result, Is.StringContaining("Some data on the page"));
+```
+
+In the above sample, `MvcApplication` is the name of the class behind your `Global.asax` file.
+The PlasmaClient helper will detect the location of your webapp assemblies, and load them all into the app-domain automatically. Everything should just work.
+
+The `client` generated is a standard `System.Net.Http.HttpClient` and you can use it as you would regularly, adding HTTP headers, cookies and content. By combining the above snippet with the `CsQuery` package you can use JQuery like selectors over the response body.
 
 ## Support
 
-**Plasma.Core, Plasma.Http, Plasma.WebDriver**
- * NET2
- * NET35
-
-**Plasma.HttpClient**
- * NET45
+* Plasma.Core `NET2` `NET35`
+* Plasma.Http `NET2` `NET35`
+* Plasma.WebDriver `NET2` `NET35`
+* Plasma.HttpClient `NET45`
 
 **Frameworks**
  * ASP.NET MVC3-5
@@ -65,17 +83,13 @@ Each of these libraries are available as **nuget packages**.
 
 **ASP.NET vNext?**
 
-ASP.NET vNext fundamentally changes the way ASP.NET websites are hosted, and involves a ground-up re-write of many core components and frameworks (ASP.NET MVC, WebAPI).
-
-  It is unlikely that Plasma will support ASP.NET vNext as in-memory test support via OWIN will be possible using Katana and Microsofts existing Katana based testing libraries
+ASP.NET vNext fundamentally changes the way ASP.NET websites are hosted, and involves a ground-up re-write of many core components and frameworks (ASP.NET MVC, WebAPI).  It is unlikely that Plasma will support ASP.NET vNext as in-memory test support via OWIN will be possible using Katana and Microsofts existing Katana based testing libraries.
 
 [See also: Testing WebAPI in memory with Katana and OWIN](http://www.davidwhitney.co.uk/Blog/2015/01/07/testing-an-asp-net-webapi-app-in-memory/).
 
 **JavaScript**
 
-**Plasma tests do not execute in a browser, so javascript and single page apps are not supported.**
-
-It's suggested you use WebDriver and PhantomJS for these scenarios.
+Plasma tests do not execute in a browser, so javascript and single page apps are not supported. It's suggested you **use WebDriver and PhantomJS for these scenarios.**
 
 ## See also
 
@@ -85,4 +99,4 @@ It's suggested you use WebDriver and PhantomJS for these scenarios.
 
 ## Licence
 
-Plasma is distributed under the terms of the Microsoft Permissive Licence: [http://www.microsoft.com/opensource/licenses.mspx#Ms-PL]
+Plasma is distributed under the terms of the [Microsoft Permissive Licence](http://www.microsoft.com/opensource/licenses.mspx#Ms-PL)
