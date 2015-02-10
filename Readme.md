@@ -1,24 +1,81 @@
 # Plasma [![Build status](https://ci.appveyor.com/api/projects/status/iqqdm2ymtt0vc81w/branch/master?svg=true)](https://ci.appveyor.com/project/Plasma/plasma/branch/master)
 
----
+ * What's Plasma?
+ * How does it work?
+ * Plasmas libraries
+ * Getting started
+ * Supported Frameworks
 
-Plasma is a web automation framework for .NET that allows you to write fast and painless web based tests of your ASP.NET web application. You can fire requests at your application programatically and assert by checking the HTML response that you get back. As an added benefit, the ASP.NET application is hosted within the test runner process: you don't need to have a real server or depend on IIS. Being standalone means that Plasma tests can easily be run on a build server.
+ ---
 
-At the lowest level, responses are returned as plain text (it is HTTP after all...). To make querying the response easier, we have incorporated some of the [http://code.google.com/p/selenium/?redir=1](Webdriver) interfaces which provide a useful way of looking up specific page elements and finding/manipulating their values. We plan to make a complete web driver implementation later so you have a choice between low level HTTP interaction and a more 'browser like' driver for your tests. 
+### What's Plasma?
 
-See the [wiki](https://github.com/jennifersmith/plasma/wiki) for examples.
+Plasma is an in memory web automation framework for ASP.NET web applications (MVC, WebForms and WebPages - anything that runs in a standard ASP.NET AppDomain).
+
+Using Plasma, you can execute the kind of tests that would otherwise require IIS, Casini, or IIS Express, in memory, hosted inside your test runner. These tests can be run on a build server, run via ReSharper, NCrunch, or your test runner of choice.
+
+### How does it work?
+
+Plasma creates and hosts ASP.NET application domains inside of your test framework, loading your application and all its assemblies - just like IIS would. Because both your tests and your application are then running inside the same process, they can interact with each other.
+
+You can manipulate dependencies, and use the Plasma libraries to make HTTP style requests to your running web app.
+
+The entire ASP.NET application pipeline is executed, returning the raw HTTP responses that would have been otherwise pushed across a TCP connection.
+
+### Plasmas libraries
+
+##### Plasma.Core
+
+Contains the core plasma runtime and app domain spoofing code, but you interact with it through a "client-like" library.
+
+##### Plasma.HttpClient
+
+Provides a builder class to use a standard `System.Net.Http.HttpClient` (available in the package dependency `Microsoft.Net.Http`) to make calls to your application.
+
+##### Plasma.WebDriver
+
+Provides a **partial implementation** of the Selenium [Webdriver](http://code.google.com/p/selenium/?redir=1) interfaces. These provide a useful way of looking up specific page elements and their values.
+
+*Examples for `Plasma.WebDriver` are available on the old  [wiki](https://github.com/jennifersmith/plasma/wiki).*
+
+##### Plasma.Http `Deprecated`
+
+The original (pre-`System.Net.Http.HttpClient`) implementation of "Http-to-Plasma". Will be removed once v.2 stabalises - but maintained for backwards compatibility. **Prefer Plasma.HttpClient.**
+
+Each of these libraries are available as **nuget packages**.
+
+## Getting started
+
+    COMING SOON
 
 ## Support
 
-It supports all .NET web applications that can be run in IIS or the web development server. It has been tested with .NET versions 3.5 and above but it should also support 2.0. If you have any problems getting your particular web application to run, please raise an issue on the GitHub issue page for this project: [http://github.com/jennifersmith/plasma/issues].
+**Plasma.Core, Plasma.Http, Plasma.WebDriver**
+ * NET2
+ * NET35
 
-The committers have used it mainly on ASP.NET MVC projects but the plasma test suite covers webforms also.
+**Plasma.HttpClient**
+ * NET45
 
-Plasma is a standalone library that does not depend on any particular testing framework. We use NUnit currently for the examples and functional tests but you can use any testing framework you like.
+**Frameworks**
+ * ASP.NET MVC3-5
+ * ASP.NET WebForms
+ * ASP.NET WebPages
+ * WebAPI
 
-## JavaScript
+**ASP.NET vNext?**
 
-Plasma tests remove the need to use the browser or even a real server in the tests. While this makes the tests very reliable and lightening-fast, you cannot test any JavaScript behaviour. A browser automation library such as Selenium/Webdriver's Firefox/Chrome driver or additional coverage with JavaScript unit tests are both good options here. 
+ASP.NET vNext fundamentally changes the way ASP.NET websites are hosted, and involves a ground-up re-write of many core components and frameworks (ASP.NET MVC, WebAPI).
+
+  It is unlikely that Plasma will support ASP.NET vNext as in-memory test support via OWIN will be possible using Katana and Microsofts existing Katana based testing libraries
+
+[See also: Testing WebAPI in memory with Katana and OWIN](http://www.davidwhitney.co.uk/Blog/2015/01/07/testing-an-asp-net-webapi-app-in-memory/).
+
+**JavaScript**
+
+**Plasma tests do not execute in a browser, so javascript and single page apps are not supported.**
+
+It's suggested you use WebDriver and PhantomJS for these scenarios.
 
 ## See also
 
