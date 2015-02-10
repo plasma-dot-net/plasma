@@ -22,9 +22,9 @@ Plasma tests remove the need to use the browser or even a real server in the tes
 
 ## See also
 
-[Contributors](contributors.md)
-[Contributing](contributing.md)
-[Roadmap](roadmap.md)
+* [Contributors](contributors.md)
+* [Contributing](contributing.md)
+* [Roadmap](roadmap.md)
 
 ## Licence
 
