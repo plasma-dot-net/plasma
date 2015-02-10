@@ -1,4 +1,6 @@
-# Plasma
+# Plasma [![Build status](https://ci.appveyor.com/api/projects/status/iqqdm2ymtt0vc81w/branch/master?svg=true)](https://ci.appveyor.com/project/Plasma/plasma/branch/master)
+
+---
 
 Plasma is a web automation framework for .NET that allows you to write fast and painless web based tests of your ASP.NET web application. You can fire requests at your application programatically and assert by checking the HTML response that you get back. As an added benefit, the ASP.NET application is hosted within the test runner process: you don't need to have a real server or depend on IIS. Being standalone means that Plasma tests can easily be run on a build server.
 
