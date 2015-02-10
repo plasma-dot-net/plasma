@@ -6,7 +6,7 @@
  * Getting started
  * Supported Frameworks
 
- ---
+---
 
 ### What's Plasma?
 
