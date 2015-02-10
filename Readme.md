@@ -12,7 +12,7 @@
 
 Plasma is an in memory web automation framework for ASP.NET web applications (MVC, WebForms and WebPages - anything that runs in a standard ASP.NET AppDomain).
 
-Using Plasma, you can execute the kind of tests that would otherwise require IIS, Casini, or IIS Express, in memory, hosted inside your test runner. These tests can be run on a build server, run via ReSharper, NCrunch, or your test runner of choice.
+Using Plasma, you can execute the kind of tests that would otherwise require IIS, Cassini, or IIS Express, in memory, hosted inside your test runner. These tests can be run on a build server, run via ReSharper, NCrunch, or your test runner of choice.
 
 ### How does it work?
 
