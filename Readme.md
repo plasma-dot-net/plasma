@@ -50,7 +50,7 @@ The simplest way to get started is to use `Plasma.HttpClient`. It uses `System.N
 
 Install the `Plasma.HttpClient` nuget package
 
-    PM > Package-Install Plasma.HttpClient
+    PM > Install-Package Plasma.HttpClient
 
 You can then write tests that look like this:
 
