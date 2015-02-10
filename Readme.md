@@ -20,25 +20,12 @@ Plasma is a standalone library that does not depend on any particular testing fr
 
 Plasma tests remove the need to use the browser or even a real server in the tests. While this makes the tests very reliable and lightening-fast, you cannot test any JavaScript behaviour. A browser automation library such as Selenium/Webdriver's Firefox/Chrome driver or additional coverage with JavaScript unit tests are both good options here. 
 
-## Road map
+## See also
 
-We have a [road map](https://github.com/jennifersmith/plasma/wiki/Roadmap) listing the features we want to 
-
-## Contributing
-
-Happy to receive any pull requests. So if you can fix a bug or have a feature to add please go ahead!
-
-## Contributors
-
-In no particular order:
-
-* [Alex Harin](http://github.com/aharin)
-* [Jennifer Smith](http://www.jennifersmith.co.uk)
-* [Steve Smith](http://stevesmithblog.com/)
-* [Chris Bird](http://www.christopherbird.co.uk)
-* [Tom Scott](https://github.com/tomwscott)
+[Contributors](contributors.md)
+[Contributing](contributing.md)
+[Roadmap](roadmap.md)
 
 ## Licence
 
 Plasma is distributed under the terms of the Microsoft Permissive Licence: [http://www.microsoft.com/opensource/licenses.mspx#Ms-PL]
-
