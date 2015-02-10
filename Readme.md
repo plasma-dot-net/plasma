@@ -55,12 +55,12 @@ Install the `Plasma.HttpClient` nuget package
 You can then write tests that look like this:
 
 ```csharp
-    var client = PlasmaClient.For<MvcApplication>();
+var client = PlasmaClient.For<MvcApplication>();
 
-    var response = await client.GetAsync("/some-path");
+var response = await client.GetAsync("/some-path");
 
-    Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
-    Assert.That(response.Content.ReadAsStringAsync().Result, Is.StringContaining("Some data on the page"));
+Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+Assert.That(response.Content.ReadAsStringAsync().Result, Is.StringContaining("Hello world"));
 ```
 
 In the above sample, `MvcApplication` is the name of the class behind your `Global.asax` file.
