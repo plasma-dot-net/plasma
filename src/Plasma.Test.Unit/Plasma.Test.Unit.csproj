@@ -57,9 +57,6 @@
     <Compile Include="..\Plasma.Core\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Plasma.Core\Properties\VersionInfo.cs">
-      <Link>Properties\VersionInfo.cs</Link>
-    </Compile>
     <Compile Include="CookieParserTest.cs" />
     <Compile Include="WebDriver\Finders\ElementFinderContextTests.cs" />
   </ItemGroup>
