@@ -1,0 +1,22 @@
+version: 2.0.{build}
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+nuget:
+  disable_publish_on_pr: true
+before_build:
+- .nuget\nuget restore
+build:
+  project: Plasma.sln
+  publish_nuget: true
+  verbosity: minimal
+test: off
+deploy:
+- provider: NuGet
+  api_key:
+    secure: kFMkoRl3BohLLQe6OhYGIAgf65c3VAXO8/k+ISjyetNYw3e+pawF8f2M2OiQUlw4
+  on:
+    branch: published
