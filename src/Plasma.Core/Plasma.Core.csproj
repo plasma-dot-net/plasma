@@ -94,13 +94,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <VersionInfoPath>Properties\VersionInfo</VersionInfoPath>
-  </PropertyGroup>
-  <Target Name="BeforeBuild" Condition="'$(SkipDefaultVersion)' == '' Or !Exists('$(VersionInfoPath).cs')">
-    <Message Text="Applying Default Version" />
-    <Copy SourceFiles="$(VersionInfoPath).default.cs" DestinationFiles="$(VersionInfoPath).cs" />
-  </Target>
   <Target Name="AfterBuild">
   </Target>
 </Project>
