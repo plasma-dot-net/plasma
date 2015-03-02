@@ -67,9 +67,12 @@
     <Compile Include="AspNetApplication.cs" />
     <Compile Include="AspNetRequest.cs" />
     <Compile Include="AspNetResponse.cs" />
+    <Compile Include="ClassicPipeline.cs" />
     <Compile Include="ContentTypeMapper.cs" />
     <Compile Include="CookieParser.cs" />
     <Compile Include="Host.cs" />
+    <Compile Include="IHostPipeline.cs" />
+    <Compile Include="IntegratedPipeline.cs" />
     <Compile Include="IRequestProcessor.cs" />
     <Compile Include="MultipartFormBody.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,7 +10,6 @@
  * **********************************************************************************/
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Web;
 using System.Web.Hosting;
 
@@ -19,8 +18,9 @@ namespace Plasma.Core
     internal class Host : MarshalByRefObject, IRegisteredObject
     {
         private AspNetApplication _app;
+	    private IHostPipeline _pipeline;
 
-        public Host()
+	    public Host()
         {
             HostingEnvironment.RegisterObject(this);
         }
@@ -32,10 +32,12 @@ namespace Plasma.Core
 
         public void Configure(AspNetApplication app)
         {
-            _app = app;
+	        _app = app;
+	        _pipeline = _app.UseIntegratedPipeline ? (IHostPipeline) new IntegratedPipeline() : new ClassicPipeline();
+	        _pipeline.Configure(app);
         }
 
-        void IRegisteredObject.Stop(bool immediate)
+	    void IRegisteredObject.Stop(bool immediate)
         {
             if (_app != null)
             {
@@ -54,7 +56,6 @@ namespace Plasma.Core
         {
             func.Invoke(arg);
         }
-
 
         public TR InvokeInAspAppDomain<TR>(Func<TR> func)
         {
@@ -82,21 +83,8 @@ namespace Plasma.Core
             out byte[] responseBody,
             out string responseStatusDescription)
         {
-
-            var wr = new WorkerRequest(requestFilePath, requestPathInfo,
-                requestQueryString, requestMethod, requestHeaders, requestBody);
-
-            HttpRuntime.ProcessRequest(wr);
-
-            while (!wr.Completed)
-            {
-                Thread.Sleep(50);
-            }
-
-            responseHeaders = wr.ResponseHeaders;
-            responseBody = wr.ResponseBody;
-            responseStatusDescription = wr.ResponseStatusDescription;
-            return wr.ResponseStatus;
+	        return _pipeline.ProcessRequest(requestFilePath, requestPathInfo, requestQueryString, requestMethod,
+		        requestHeaders, requestBody, out responseHeaders, out responseBody, out responseStatusDescription);
         }
 
         public void Close()

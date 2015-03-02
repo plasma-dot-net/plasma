@@ -31,6 +31,8 @@ namespace Plasma.Core
         private Host _host;
         private readonly string _virtualPath;
         private readonly string _physicalPath;
+
+		public bool UseIntegratedPipeline { get; set; }
         
         public AspNetApplication(string virtualPath, string physicalPath) {
             _virtualPath = virtualPath;
