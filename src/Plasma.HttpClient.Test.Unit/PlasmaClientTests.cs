@@ -25,7 +25,7 @@ namespace Plasma.HttpClient.Test.Unit
             {
                 new KeyValuePair<string, string>("value", _randomData)
             });
-            _client = PlasmaClient.For<MvcApplication>();
+			_client = PlasmaClient.For(Path.GetFullPath(@".\..\..\..\web\Plasma.Sample.Web.Mvc"));
         }
 
         [Test]
@@ -55,9 +55,7 @@ namespace Plasma.HttpClient.Test.Unit
         [Test]
         public async void GetCallGet()
         {
-            var client = PlasmaClient.For<MvcApplication>();
-
-            var response = await client.GetAsync("/AllTheVerbs/Get");
+            var response = await _client.GetAsync("/AllTheVerbs/Get");
 
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
