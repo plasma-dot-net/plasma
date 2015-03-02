@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PlasmaClientOwinTests.cs" />
     <Compile Include="PlasmaMessageHandlerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PlasmaClientTests.cs" />
@@ -76,6 +77,10 @@
     <ProjectReference Include="..\Plasma.Http\Plasma.Http.csproj">
       <Project>{C6D24739-DDED-4AC3-BA28-03F4DE1699DB}</Project>
       <Name>Plasma.Http</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\web\Plasma.Sample.Web.Mvc.OwinHosted\Plasma.Sample.Web.Mvc.OwinHosted.csproj">
+      <Project>{2CCDD93F-2F55-4FFE-81A5-AC2902EAE837}</Project>
+      <Name>Plasma.Sample.Web.Mvc.OwinHosted</Name>
     </ProjectReference>
     <ProjectReference Include="..\web\Plasma.Sample.Web.Mvc\Plasma.Sample.Web.Mvc.csproj">
       <Project>{EFDB142E-4D47-4370-830A-9F964DFD2042}</Project>

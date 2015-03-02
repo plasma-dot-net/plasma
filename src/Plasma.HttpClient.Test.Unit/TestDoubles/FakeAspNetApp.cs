@@ -10,8 +10,9 @@ namespace Plasma.HttpClient.Test.Unit.TestDoubles
     {
         public AspNetRequest LastRequest { get; set; }
         public string LastRequestPath { get; set; }
+		public bool UseIntegratedPipeline { get; set; }
 
-        public AspNetResponse ProcessRequest(AspNetRequest request)
+	    public AspNetResponse ProcessRequest(AspNetRequest request)
         {
             LastRequest = request;
             LastRequestPath = request.FilePath;
