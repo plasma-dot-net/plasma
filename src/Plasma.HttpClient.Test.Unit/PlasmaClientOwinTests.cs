@@ -52,6 +52,7 @@ namespace Plasma.HttpClient.Test.Unit
 
 	        var body = response.Content.ReadAsStringAsync().Result;
 
+	        Assert.That(body, Is.Not.Null);
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
         }
     }
